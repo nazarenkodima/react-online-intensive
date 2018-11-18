@@ -12,7 +12,7 @@ import Styles from './styles.m.css';
 export default class Feed extends Component {
     render() {
         const {
-            avatar, 
+            avatar,
             currentUserFirstName,
             currentUserLastName,
         } = this.props;
@@ -20,10 +20,10 @@ export default class Feed extends Component {
         return (
             <section className = { Styles.feed }>
                 <Statusbar { ...this.props } />
-                <Composer 
+                <Composer
                     avatar = { avatar }
                     currentUserFirstName = { currentUserFirstName }
-                 />
+                />
                 <Post { ...this.props } />
             </section>
         );
