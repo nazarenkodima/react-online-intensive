@@ -6,9 +6,11 @@ import Styles from './styles.m.css';
 
 export default class Composer extends Component {
     render() {
-        const { avatar,
-                currentUserFirstName       
+        const {
+            avatar,
+            currentUserFirstName,
         } = this.props;
+
         return (
             <section className = { Styles.composer }>
                 <img src = { avatar } />

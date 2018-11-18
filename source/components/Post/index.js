@@ -12,7 +12,7 @@ export default class Post extends Component {
             currentUserLastName,
             avatar,
         } = this.props;
-        
+
         return (
             <section className = { Styles.post }>
                 <img src = { avatar } />
