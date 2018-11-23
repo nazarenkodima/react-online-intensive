@@ -9,18 +9,19 @@ import { Consumer } from 'components/HOC/withProfile';
 import Styles from './styles.m.css';
 
 export default class Post extends Component {
+    static contextType = Consumer;
+
     render() {
+        const { context } = this;
+
         return (
-            <Consumer>
-                {(context) => (
-                    <section className = { Styles.post }>
-                        <img src = { context.avatar } />
-                        <a> {`${context.currentUserFirstName} ${context.currentUserLastName}`} </a>
-                        <time> {moment().format('MMMM D h:mm:ss a')} </time>
-                        <p> Hello! </p>
-                    </section>
-                )}
-            </Consumer>
+            <section className = { Styles.post }>
+                <img src = { context.avatar } />
+                <a> {`${context.currentUserFirstName} ${context.currentUserLastName}`} </a>
+                <time> {moment().format('MMMM D h:mm:ss a')} </time>
+                <p> Hello! </p>
+            </section>
+
         );
     }
 }
