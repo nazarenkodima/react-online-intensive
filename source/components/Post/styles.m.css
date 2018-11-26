@@ -44,6 +44,8 @@
     font-size: 14px;
   }
 
+
+}
   .cross {
     content: '';
     position: absolute;
@@ -59,4 +61,3 @@
       background-position: -13px 0;
     }
   }
-}
