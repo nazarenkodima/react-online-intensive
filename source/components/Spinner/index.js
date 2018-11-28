@@ -7,12 +7,11 @@ import Styles from './styles.m.css';
 
 const portal = document.getElementById('spinner');
 
-export default class Spinner extends Component {
-    render () {
-        const { isSpinning } = this.props;
+export const Spinner = (props) => {
+    const { isSpinning } = props;
 
-        return createPortal(
-            isSpinning ?  <div className = { Styles.spinner } /> : null, portal,
-        );
-    }
-}
+    return createPortal(
+        isSpinning ?  <div className = { Styles.spinner } /> : null, portal,
+    );
+};
+

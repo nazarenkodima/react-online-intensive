@@ -6,7 +6,7 @@ import moment from 'moment';
 import Statusbar from 'components/StatusBar';
 import Composer from 'components/Composer';
 import Post from 'components/Post';
-import Spinner from 'components/Spinner';
+import { Spinner } from 'components/Spinner';
 
 
 //Instruments
