@@ -89,7 +89,7 @@ export default class Feed extends Component {
         const response = await fetch(api, {
             method: 'GET',
         });
-
+        
         const { data : posts } = await response.json();
         this.setState({
             posts,
