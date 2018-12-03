@@ -58,7 +58,6 @@ export default class Feed extends Component {
                     posts:  posts.map((post) => post.id === likedPost.id ? likedPost : post
                      ),
                 }));
-                console.log(likedPost.firstName)
             }
         });
 
@@ -118,8 +117,6 @@ export default class Feed extends Component {
      }
 
      _likePost = async (id) => {
-        //  const { currentUserFirstName, currentUserLastName } = this.props;
-
          this._setIsSpinningStatus(true);
 
          const response = await fetch(`${api}/${id}`, {
