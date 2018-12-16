@@ -7,8 +7,8 @@ import { withProfile } from 'components/HOC/withProfile';
 
 //Instrumens
 import Styles from './styles.m.css';
-@withProfile
-export default class Composer extends Component {
+
+export class Composer extends Component {
     static propTypes = {
         _createPost: PropTypes.func.isRequired,
     }
@@ -16,7 +16,7 @@ export default class Composer extends Component {
     state = {
         comment: '',
     }
-     
+
     _updateComment = (event) => {
         this.setState({
             comment: event.target.value,
@@ -76,3 +76,5 @@ export default class Composer extends Component {
         );
     }
 }
+
+export default withProfile(Composer);
