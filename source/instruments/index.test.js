@@ -38,6 +38,10 @@ describe('instruments', () => {
         expect(getUniqueID(8)).toHaveLength(8);
     });
 
+    test('getUniqueID  should throw specific error', () => {
+        expect(() => getUniqueID('ok')).toThrow('The function argument should be a number!');
+    });
+
     test('getFullApiUrl function should be a function', () => {
         expect(getFullApiUrl).toBeInstanceOf(Function);
     });
@@ -48,5 +52,9 @@ describe('instruments', () => {
 
     test('getFullApiUrl should throw, when called with non-string type as a second argument', () => {
         expect(() => getFullApiUrl('ok', 1)).toThrow();
+    });
+
+    test('getFullApiUrl should be string', () => {
+        expect(typeof getFullApiUrl('string', 'string')).toBe('string');
     });
 });
