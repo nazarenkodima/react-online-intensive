@@ -7,7 +7,9 @@ const props = {
     _createPost: jest.fn(),
 };
 
-const enter =  {key: 'Enter'};
+const mocks = {
+    _preventDefault: jest.fn(),
+};
 
 const comment = 'Merry Christmas!';
 
@@ -19,12 +21,13 @@ const updatedState = {
     comment,
 };
 
-const result = mount(<Composer { ...props } />);
+const result = mount(<Composer { ...props }/>);
 
 const _submitCommentSpy = jest.spyOn(result.instance(), '_submitComment');
 const _handleFormSubmitSpy = jest.spyOn(result.instance(), '_handleFormSubmit');
 const _updateCommentSpy = jest.spyOn(result.instance(), '_updateComment');
 const _submitOnEnterSpy = jest.spyOn(result.instance(), '_submitOnEnter');
+
 
 describe('composer component', () => {
     test('should have one <section> element', () => {
@@ -97,10 +100,31 @@ describe('composer component', () => {
         expect(_updateCommentSpy).toHaveBeenCalledTimes(1);
     });
 
-    test('should handle form submit event on enter', () => {
-        expect(enter).toBeTruthy();
+    test('should call e.preventDefault() and this._submitComment when onKeyPress handler is invoked ', () => {
+        jest.clearAllMocks();
+        result.instance()._submitOnEnter({
+            preventDefault: mocks._preventDefault,
+            key:            'Enter',
+        });
 
+        expect(mocks._preventDefault).toHaveBeenCalledTimes(1);
+        expect(_submitCommentSpy).toHaveBeenCalledTimes(1);
+    });
+
+    test('should handle form submit event on Enter', () => {
         result.find('form').simulate('submit',  {key: 'Enter'});
+
+        expect(result.find('textarea').text()).toBe('');
+    });
+
+    test('should not call e.preventDefault and this._submitComment when key is not Enter ', () => {
+        jest.clearAllMocks();
+        result.instance()._submitOnEnter({
+            preventDefault: mocks._preventDefault,
+        });
+
+        expect(mocks._preventDefault).not.toHaveBeenCalled();
+        expect(_submitCommentSpy).not.toHaveBeenCalled();
     });
 });
 
